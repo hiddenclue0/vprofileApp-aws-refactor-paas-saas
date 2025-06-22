@@ -26,7 +26,6 @@ The goal: **Eliminate direct EC2 management** and adopt highly available, scalab
 ## 🏗️ Solution Architecture
 
 ```mermaid
-flowchart TD
     A[User Request] --> B[CloudFront (CDN)]
     B --> C[Route 53 (DNS)]
     C --> D[Elastic Beanstalk<br/>(Spring Boot App)]
