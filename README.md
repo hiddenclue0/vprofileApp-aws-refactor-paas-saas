@@ -1,13 +1,23 @@
-# 🚀 Refactoring vProfile Application with AWS Managed Services
+# 🚀 vprofileApp: Cloud-Native Refactoring with AWS Managed Services
 
-Welcome to the **vProfile Cloud-Native Refactoring Guide**! This project transforms the classic multi-tier Spring Boot vProfile app into a modern, scalable, and maintainable architecture using **AWS managed services**.
+Welcome to the **vprofileApp Cloud-Native Refactoring Guide**!  
+This project transforms the classic multi-tier Spring Boot vProfile app into a modern, scalable, and maintainable architecture using **AWS managed services**.
+
+---
+
+## 📘 Overview
+
+We re-architect a previously lift-and-shifted Spring Boot enterprise app using AWS managed services such as **Elastic Beanstalk, RDS, ElastiCache, Amazon MQ, CloudFront, Route 53, and S3**.  
+The goal: **Eliminate direct EC2 management** and adopt highly available, scalable, and easy-to-operate cloud-native solutions.
 
 ---
 
 ## 🌐 Why Refactor?
 
-- **From:** Manual EC2 provisioning, local VMs, and operational overhead.
-- **To:** Fully managed AWS services, automated deployments, and cloud-native best practices.
+| From                                   | To                                                      |
+|-----------------------------------------|---------------------------------------------------------|
+| Manual EC2 provisioning, local VMs      | Fully managed AWS services                              |
+| High operational overhead               | Automated deployments, cloud-native best practices      |
 
 > **Note:** This is a refactoring of an earlier lift-and-shift migration, now leveraging AWS-native capabilities for maximum efficiency.
 
@@ -24,12 +34,27 @@ graph TD
         C --> F[Amazon MQ<br>(RabbitMQ)]
 ```
 
-- **Elastic Beanstalk:** Automated deployment & scaling of the app
+- **Elastic Beanstalk:** Automated deployment & scaling
 - **RDS:** Managed MySQL database
 - **ElastiCache:** High-speed caching
 - **Amazon MQ:** Reliable messaging
 - **Route 53 & CloudFront:** Global DNS & CDN
 - **IAM & Security Groups:** Secure, least-privilege access
+
+---
+
+## ⚙️ AWS Services Used
+
+| Service              | Purpose                                 | Replaces                        |
+|----------------------|-----------------------------------------|---------------------------------|
+| Elastic Beanstalk    | App hosting, ELB & Auto Scaling         | EC2 + Tomcat + ALB              |
+| Amazon RDS           | Managed MySQL DB                        | MySQL on EC2                    |
+| Amazon ElastiCache   | In-memory caching (Memcached)           | Memcached on EC2                |
+| Amazon MQ            | Managed messaging (ActiveMQ)            | RabbitMQ on EC2                 |
+| Amazon S3            | Artifact storage                        | NFS on EC2                      |
+| Amazon CloudFront    | CDN for global content delivery         | -                               |
+| Amazon Route 53      | DNS service                             | Manual DNS config or GoDaddy    |
+| Amazon CloudWatch    | Logs, metrics, alarms                   | Manual log collection           |
 
 ---
 
@@ -88,45 +113,45 @@ refactoring-with-aws/
         └── steps-guide-image/
 ```
 
-> 📸 **Every step includes visual guides and screenshots in `steps-guide-image/` folders.**
+> 📸 **Each step includes visual guides and screenshots in `steps-guide-image/` folders.**
 
 ---
 
 ## 🛠️ Step-by-Step Implementation
 
-### 1️⃣ Security Groups & Key Pairs
+### 1. Security Groups & Key Pairs
 - Create least-privilege security groups for each service.
 - Generate SSH key pairs for secure access.
 
-### 2️⃣ Amazon RDS (MySQL)
+### 2. Amazon RDS (MySQL)
 - Launch RDS with multi-AZ (optional) for high availability.
 - Configure DB credentials and networking.
 
-### 3️⃣ ElastiCache (Memcached)
+### 3. ElastiCache (Memcached)
 - Deploy a Memcached cluster.
 - Integrate with the app for caching.
 
-### 4️⃣ Amazon MQ (RabbitMQ)
+### 4. Amazon MQ (RabbitMQ)
 - Provision Amazon MQ.
 - Securely connect the app to the message broker.
 
-### 5️⃣ Database Initialization
+### 5. Database Initialization
 - Use `accountsdb.sql` and `db_backup.sql` to set up schema and data.
 
-### 6️⃣ Elastic Beanstalk Deployment
+### 6. Elastic Beanstalk Deployment
 - Package the app as a WAR.
 - Deploy via EB CLI or AWS Console.
 - Set environment variables for DB, MQ, and Cache endpoints.
 
-### 7️⃣ Update App Config
+### 7. Update App Config
 - Collect all service endpoints.
 - Update `application.properties` for seamless integration.
 
-### 8️⃣ Build & Deploy Artifact
+### 8. Build & Deploy Artifact
 - Build with Maven.
 - Use `build-install-app.sh` for automated deployment.
 
-### 9️⃣ Finalize & Clean Up
+### 9. Finalize & Clean Up
 - Test the deployment.
 - Remove unused resources.
 - Document endpoints and costs.
