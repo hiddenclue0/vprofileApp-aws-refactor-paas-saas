@@ -25,13 +25,15 @@ The goal: **Eliminate direct EC2 management** and adopt highly available, scalab
 
 ## 🏗️ Solution Architecture
 
-
-    A[User Request] --> B[CloudFront (CDN)]
-    B --> C[Route 53 (DNS)]
-    C --> D[Elastic Beanstalk<br/>(Spring Boot App)]
-    D --> E[RDS (MySQL)]
-    D --> F[ElastiCache (Memcached)]
-    D --> G[Amazon MQ (RabbitMQ)]
+```mermaid
+graph TD;
+    A[User Request] --> B[CloudFront (CDN)];
+    B --> C[Route 53 (DNS)];
+    C --> D[Elastic Beanstalk<br/>(Spring Boot App)];
+    D --> E[RDS (MySQL)];
+    D --> F[ElastiCache (Memcached)];
+    D --> G[Amazon MQ (RabbitMQ)];
+```
 
 
 
