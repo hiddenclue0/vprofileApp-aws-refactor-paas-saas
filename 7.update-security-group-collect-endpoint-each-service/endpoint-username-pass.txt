@@ -1,0 +1,14 @@
+1.RDS:
+Endpoint: vprofileapp-rds.cu5kou6481uv.us-east-1.rds.amazonaws.com
+username: admin
+password: 'rsA1oqV>f-]*|odz-0>_.jmp3oAz'
+
+
+2.Elastic Cache
+Endpoint: vprofileapp-cache.rfwtq9.0001.use1.cache.amazonaws.com:11211
+
+
+3.Amazon MQ
+Endpoint: b-20d9c178-798a-470e-8b75-bc2c728e6a61.mq.us-east-1.on.aws:5671
+username: rabbit
+password: rabbit123456
