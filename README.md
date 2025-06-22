@@ -32,7 +32,6 @@ graph TD
     C --> D[RDS (MySQL)]
     C --> E[ElastiCache (Memcached)]
     C --> F[Amazon MQ (RabbitMQ)]
-
 ```
 
 - **Elastic Beanstalk:** Automated deployment & scaling
