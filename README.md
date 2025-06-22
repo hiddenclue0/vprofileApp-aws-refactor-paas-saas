@@ -27,11 +27,12 @@ The goal: **Eliminate direct EC2 management** and adopt highly available, scalab
 
 ```mermaid
 graph TD
-    A[Route 53\n(DNS)] --> B[CloudFront\n(CDN)]
-    B --> C[Elastic Beanstalk\n(Spring Boot App)]
-    C --> D[RDS\n(MySQL)]
-    C --> E[ElastiCache\n(Memcached)]
-    C --> F[Amazon MQ\n(RabbitMQ)]
+    A[Route 53 (DNS)] --> B[CloudFront (CDN)]
+    B --> C[Elastic Beanstalk (Spring Boot App)]
+    C --> D[RDS (MySQL)]
+    C --> E[ElastiCache (Memcached)]
+    C --> F[Amazon MQ (RabbitMQ)]
+
 ```
 
 - **Elastic Beanstalk:** Automated deployment & scaling
